@@ -27,7 +27,7 @@
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
 
-//sim
+//sim//
 //CHECKBOX
 [
 	"SoIV_fn","CHECKBOX",
