@@ -17,9 +17,9 @@ class VCN_EH
 };
 class DefaultEventHandlers
 {
-	class VCN_EH: VCN_EH
+	/*class VCN_EH: VCN_EH
 	{
-	};
+	};*/
 };
 class Extended_PostInit_EventHandlers
 {
