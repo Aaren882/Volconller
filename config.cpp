@@ -21,6 +21,13 @@ class DefaultEventHandlers
 	{
 	};*/
 };
+class Extended_PreInit_EventHandlers 
+{
+	class Volconller_PreInit
+	{
+		init = "call compile preprocessFileLineNumbers 'MG8\Volconller\XEH_preInit.sqf'";
+	};
+};
 class Extended_PostInit_EventHandlers
 {
 	class Volconller_PostInit
