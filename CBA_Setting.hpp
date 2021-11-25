@@ -1,28 +1,28 @@
 //Sliders
 [
 	"heliEX_sdr", "SLIDER",
-  ["External Helicopter Volume (%)","Volume of Exterior"],
+	["External Helicopter Volume (%)","Volume of Exterior"],
 	["Volume Controllers", "Heli Volume Settings"],
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
 
 [
 	"heliIN_sdr", "SLIDER",
-  ["Internal Helicopter Volume (%)","Volume of Interior"],
+	["Internal Helicopter Volume (%)","Volume of Interior"],
 	["Volume Controllers", "Heli Volume Settings"],
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
 
 [
 	"planeEX_sdr", "SLIDER",
-  ["External Plane Volume (%)","Volume of Exterior"],
+	["External Plane Volume (%)","Volume of Exterior"],
 	["Volume Controllers", "Plane Volume Settings"],
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
 
 [
 	"planeIN_sdr", "SLIDER",
-  ["Internal Plane Volume (%)","Volume of Interior"],
+	["Internal Plane Volume (%)","Volume of Interior"],
 	["Volume Controllers", "Plane Volume Settings"],
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
@@ -57,14 +57,21 @@
 [
 	"sync_fn","CHECKBOX",
 	["Synchronize the Internal and the External Volume"],
-	["Volume Controllers", "Sync Settings (Internal and External Volume will be the 'Same')"],
+	["Volume Controllers", "Sync Settings (Int and Ext Volume will be the 'Same')"],
 	false,
 	true
 ] call CBA_fnc_addSetting;
 //Slider
 [
-	"sync_sdr", "SLIDER",
-	["Vehicle Volume (%)","Volume of the Vehicle"],
-	["Volume Controllers", "Sync Settings (Internal and External Volume will be the 'Same')"],
+	"sync_plane_sdr", "SLIDER",
+	["Plane Volume (%)","Volume of Heli"],
+	["Volume Controllers", "Sync Settings (Int and Ext Volume will be the 'Same')"],
+	[0, 100, 100, 0]
+] call CBA_fnc_addSetting;
+
+[
+	"sync_heli_sdr", "SLIDER",
+	["Heli Volume (%)","Volume of Heli"],
+	["Volume Controllers", "Sync Settings (Int and Ext Volume will be the 'Same')"],
 	[0, 100, 100, 0]
 ] call CBA_fnc_addSetting;
