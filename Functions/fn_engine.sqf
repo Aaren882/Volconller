@@ -7,14 +7,16 @@ if (_Engine_State) then {
 
     if !(isGamePaused) then {
 
+			_playerVeh = vehicle player;
+
 			_veh setVariable ["VCN_Actived", true];
 
 			if (_veh isKindOf "Helicopter") then {
-				_veh spawn VCN_fnc_heli;
+				[_veh,_playerVeh] spawn VCN_fnc_heli;
 			};
 
 			if (_veh isKindOf "Plane") then {
-				_veh spawn VCN_fnc_plane;
+				[_veh,_playerVeh] spawn VCN_fnc_plane;
 			};
 
 		};

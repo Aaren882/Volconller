@@ -1,9 +1,12 @@
-params ["_heli"];
-
-_veh = vehicle player;
+params ["_heli","_veh"];
 
 _heliEXV_sdr_p = heliEX_sdr / 100;
 _heliINV_sdr_p = heliIN_sdr / 100;
+
+if (sync_fn) then {
+	_planeEXV_sdr_p = sync_heli_sdr / 100;
+	_planeINV_sdr_p = sync_heli_sdr / 100;
+};
 
 _dooranim = 1;
 _door = "";
@@ -17,7 +20,7 @@ _heliEX_sim_sdr_P = _heliEXV_sdr_p * (heliEX_sim_sdr / 100);
 
 setCustomSoundController [_heli ,"CustomSoundController16" ,_heliINV_sdr_p - 1];
 
-if ((SoIV_fn) and (vehicle player != player) and (cameraView == "internal")) then {
+if ((SoIV_fn) and (_veh != player) and (cameraView == "internal")) then {
 
 	if (_veh iskindof "plane") then {
 		if !(_door isEqualTo "") then {
