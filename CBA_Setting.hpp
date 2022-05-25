@@ -92,7 +92,7 @@
 //Sliders
 [
 	"heliEX_sim_sdr", "SLIDER",
-	["Internal to Helicopter Volume (%)","Volume of Interior"],
+	["Helicopter Volume (%)","Volume of Interior"],
 	["Volume Controllers", "Cockpit Simulation Settings"],
 	[0, 50, 25, 0],
 	0
@@ -100,7 +100,7 @@
 
 [
 	"planeEX_sim_sdr", "SLIDER",
-	["Internal to Plane Volume (%)","Volume of Interior"],
+	["Plane Volume (%)","Volume of Interior"],
 	["Volume Controllers", "Cockpit Simulation Settings"],
 	[0, 50, 25, 0],
 	0
