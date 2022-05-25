@@ -1,13 +1,12 @@
 params ["_veh", "_Engine_State"];
 
 if (_Engine_State) then {
-	VCN_handler = addMissionEventHandler ["EachFrame", {
+	_VCN_handler = addMissionEventHandler ["EachFrame", {
 
 		_veh = _thisArgs # 0;
 
     if !(isGamePaused) then {
-
-			_playerVeh = vehicle player;
+			_playerVeh = cameraOn;
 
 			_veh setVariable ["VCN_Actived", true];
 
@@ -21,9 +20,11 @@ if (_Engine_State) then {
 
 		};
 	},[_veh]];
+	//Return handler
+	_veh setVariable ["VCN_EachFrame_Handler", _VCN_handler];
 } else {
 	if (_veh getVariable ["VCN_Actived", false]) then {
-	  removeMissionEventHandler ["EachFrame", VCN_handler];
+	  removeMissionEventHandler ["EachFrame", (_veh getVariable ["VCN_EachFrame_Handler",-1])];
 		_veh setVariable ["VCN_Actived", false];
 	};
 };
