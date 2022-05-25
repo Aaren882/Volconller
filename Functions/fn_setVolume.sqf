@@ -13,7 +13,7 @@ if (sync_fn) then {
 };
 
 {
-  _veh = vehicle _x;
+  _veh = _x;
   if (_veh isKindOf "Helicopter") then {
     //Ext
     setCustomSoundController [_veh ,"CustomSoundController14" ,_heliEXV_sdr_p - 1];
@@ -30,4 +30,4 @@ if (sync_fn) then {
     setCustomSoundController [_veh ,"CustomSoundController25" ,(planeBreathe_sdr / 100) - 1];
     setCustomSoundController [_veh ,"CustomSoundController26" ,(planeRumbleG_sdr / 100) - 1];
   };
-} foreach allUnits
+} foreach vehicles;
