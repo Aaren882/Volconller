@@ -6,18 +6,21 @@ if (_Engine_State) then {
 		_veh = _thisArgs # 0;
 
     if !(isGamePaused) then {
+			//SetVolume (Global)
+			call VCN_fnc_setVolume;
+
 			_playerVeh = cameraOn;
 
-			_veh setVariable ["VCN_Actived", true];
+			if !(_veh getVariable ["VCN_Actived", false]) then {
+				if (_veh isKindOf "Helicopter") then {
+					[_veh,_playerVeh] spawn VCN_fnc_heli;
+				};
 
-			if (_veh isKindOf "Helicopter") then {
-				[_veh,_playerVeh] spawn VCN_fnc_heli;
+				if (_veh isKindOf "Plane") then {
+					[_veh,_playerVeh] spawn VCN_fnc_plane;
+				};
+				_veh setVariable ["VCN_Actived", true];
 			};
-
-			if (_veh isKindOf "Plane") then {
-				[_veh,_playerVeh] spawn VCN_fnc_plane;
-			};
-
 		};
 	},[_veh]];
 	//Return handler
