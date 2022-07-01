@@ -1,13 +1,15 @@
 params ["_heli","_veh"];
 
+_heli setVariable ["VCN_Actived", true];
+
 [{
 		params ["_heli","_veh"];
 
-		_heliEXV_sdr_p = heliEX_sdr / 100;
+		_heliEXV_sdr_p = heliEX_sdr / 100 * heliMulti_sdr;
 		_heliINV_sdr_p = heliIN_sdr / 100;
 
 		if (sync_fn) then {
-			_heliEXV_sdr_p = sync_heli_sdr / 100;
+			_heliEXV_sdr_p = sync_heli_sdr / 100 * heliMulti_sdr;
 			_heliINV_sdr_p = sync_heli_sdr / 100;
 		};
 
@@ -44,6 +46,5 @@ params ["_heli","_veh"];
 		!(_heli getVariable ["VCN_Actived", true]) or !(alive _heli)
 	}, {
 		params ["_heli","_veh"];
-
 	}, [_heli,_veh]
 ] call CBA_fnc_waitUntilAndExecute;

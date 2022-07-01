@@ -1,14 +1,22 @@
 params ["_plane","_veh"];
 
+if (_plane getVariable ["VCN_Actived", false]) exitWith {};
+
+_plane setVariable ["VCN_Actived", true];
+
+if (VCN_debug2_fn) then {
+  hintSilent formatText ["Step 2 :looping%1VCN_Actived :%2%1Time :%3",lineBreak,(_plane getVariable ["VCN_Actived", false]),time];
+};
+
 [{
 		params ["_plane","_veh"];
 		_door = getText (configFile >> "CfgVehicles" >> typeof _plane >> "DoorAnim");
 
-		_planeEXV_sdr_p = planeEX_sdr / 100;
+		_planeEXV_sdr_p = planeEX_sdr / 100 * planeMulti_sdr;;
 		_planeINV_sdr_p = planeIN_sdr / 100;
 
 		if (sync_fn) then {
-			_planeEXV_sdr_p = sync_plane_sdr / 100;
+			_planeEXV_sdr_p = sync_plane_sdr / 100 * planeMulti_sdr;;
 			_planeINV_sdr_p = sync_plane_sdr / 100;
 		};
 
@@ -106,6 +114,5 @@ params ["_plane","_veh"];
 		!(_plane getVariable ["VCN_Actived", true]) or !(alive _plane) or (_plane isEqualTo objNull)
 	}, {
 		params ["_plane","_veh"];
-
 	}, [_plane,_veh]
 ] call CBA_fnc_waitUntilAndExecute;

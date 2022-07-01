@@ -1,15 +1,15 @@
-_heliEXV_sdr_p = heliEX_sdr / 100;
-_heliINV_sdr_p = heliIN_sdr / 100;
+_planeEXV_sdr_p = planeEX_sdr / 100 * planeMulti_sdr;
+_planeINV_sdr_p = planeIN_sdr / 100 * planeMulti_sdr;
 
-_planeEXV_sdr_p = planeEX_sdr / 100;
-_planeINV_sdr_p = planeIN_sdr / 100;
+_heliEXV_sdr_p = heliEX_sdr / 100 * heliMulti_sdr;
+_heliINV_sdr_p = heliIN_sdr / 100 * heliMulti_sdr;
 
 if (sync_fn) then {
-	_planeEXV_sdr_p = sync_plane_sdr / 100;
-	_planeINV_sdr_p = sync_plane_sdr / 100;
+	_planeEXV_sdr_p = sync_plane_sdr / 100 * planeMulti_sdr;
+	_planeINV_sdr_p = sync_plane_sdr / 100 * planeMulti_sdr;
 
-  _heliEXV_sdr_p = sync_heli_sdr / 100;
-	_heliINV_sdr_p = sync_heli_sdr / 100;
+  _heliEXV_sdr_p = sync_heli_sdr / 100 * heliMulti_sdr;
+	_heliINV_sdr_p = sync_heli_sdr / 100 * heliMulti_sdr;
 };
 
 {

@@ -1,33 +1,26 @@
 params ["_veh", "_Engine_State"];
 
-if (_Engine_State) then {
-	_VCN_handler = addMissionEventHandler ["EachFrame", {
+if (VCN_debug1_fn) then {
+  hintSilent formatText ["Step 1 :Init State%1Object :%2%1Class Name :%3%1Fuel :%4%1Time :%5",lineBreak,_veh,typeof _veh,fuel _veh,time];
+};
 
-		_veh = _thisArgs # 0;
+if (_Engine_State and !(_veh getVariable ["VCN_Actived", false])) then {
+	//SetVolume (Global)
+	call VCN_fnc_setVolume;
 
-    if !(isGamePaused) then {
-			//SetVolume (Global)
-			call VCN_fnc_setVolume;
+	_playerVeh = cameraOn;
 
-			_playerVeh = cameraOn;
+	if ((_veh isKindOf "Plane") or (_veh isKindOf "Helicopter")) then {
 
-			if !(_veh getVariable ["VCN_Actived", false]) then {
-				if (_veh isKindOf "Helicopter") then {
-					[_veh,_playerVeh] spawn VCN_fnc_heli;
-				};
-
-				if (_veh isKindOf "Plane") then {
-					[_veh,_playerVeh] spawn VCN_fnc_plane;
-				};
-				_veh setVariable ["VCN_Actived", true];
-			};
+		if (_veh isKindOf "Helicopter") then {
+			[_veh,_playerVeh] spawn VCN_fnc_heli;
 		};
-	},[_veh]];
-	//Return handler
-	_veh setVariable ["VCN_EachFrame_Handler", _VCN_handler];
-} else {
-	if (_veh getVariable ["VCN_Actived", false]) then {
-	  removeMissionEventHandler ["EachFrame", (_veh getVariable ["VCN_EachFrame_Handler",-1])];
-		_veh setVariable ["VCN_Actived", false];
+		if (_veh isKindOf "Plane") then {
+			[_veh,_playerVeh] spawn VCN_fnc_plane;
+		};
+	} else {
+		call VCN_fnc_debug;
 	};
+} else {
+	_veh setVariable ["VCN_Actived", false];
 };
