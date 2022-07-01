@@ -21,6 +21,18 @@
 	}
 ] call CBA_fnc_addSetting;
 
+//Multiplier
+[
+	"heliMulti_sdr", "SLIDER",
+	["External Volume Multiplier"],
+	["Volume Controllers", "Heli Volume Settings"],
+	[1, 5, 1, 0],
+	0,
+	{
+		call VCN_fnc_setVolume;
+	}
+] call CBA_fnc_addSetting;
+
 [
 	"planeEX_sdr", "SLIDER",
 	["External Plane Volume (%)","Volume of Exterior"],
@@ -59,6 +71,18 @@
 	["G-Force Rumbling Sound Volume (%)","Volume of Rumbling Effects"],
 	["Volume Controllers", "Plane Volume Settings"],
 	[0, 100, 100, 0],
+	0,
+	{
+		call VCN_fnc_setVolume;
+	}
+] call CBA_fnc_addSetting;
+
+//Multiplier
+[
+	"planeMulti_sdr", "SLIDER",
+	["External Volume Multiplier"],
+	["Volume Controllers", "Plane Volume Settings"],
+	[1, 5, 1, 0],
 	0,
 	{
 		call VCN_fnc_setVolume;
@@ -139,4 +163,20 @@
 	{
 		call VCN_fnc_setVolume;
 	}
+] call CBA_fnc_addSetting;
+
+//Else
+//CHECKBOX
+[
+	"VCN_debug1_fn","CHECKBOX",
+	["Debug function (Step 1)"],
+	["Volume Controllers (Debug)", "Planes"],
+	false
+] call CBA_fnc_addSetting;
+
+[
+	"VCN_debug2_fn","CHECKBOX",
+	["Debug function (Step 2)"],
+	["Volume Controllers (Debug)", "Planes"],
+	false
 ] call CBA_fnc_addSetting;
