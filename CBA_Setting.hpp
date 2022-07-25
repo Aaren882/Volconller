@@ -82,7 +82,7 @@
 	"planeMulti_sdr", "SLIDER",
 	["External Volume Multiplier"],
 	["Volume Controllers", "Plane Volume Settings"],
-	[1, 5, 1, 0],
+	[1, 10, 1, 0],
 	0,
 	{
 		call VCN_fnc_setVolume;
