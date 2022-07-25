@@ -13,7 +13,7 @@ if (sync_fn) then {
 };
 
 {
-  _veh = _x;
+  private _veh = _x;
   if (_veh isKindOf "Helicopter") then {
     //Ext
     setCustomSoundController [_veh ,"CustomSoundController14" ,_heliEXV_sdr_p - 1];
