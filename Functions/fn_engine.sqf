@@ -21,6 +21,4 @@ if (_Engine_State and !(_veh getVariable ["VCN_Actived", false])) then {
 	} else {
 		call VCN_fnc_debug;
 	};
-} else {
-	_veh setVariable ["VCN_Actived", false];
 };

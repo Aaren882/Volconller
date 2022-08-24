@@ -43,8 +43,9 @@ _heli setVariable ["VCN_Actived", true];
 			setCustomSoundController [_heli ,"CustomSoundController14" ,_heliEXV_sdr_p - 1];
 		}; */
 
-		!(_heli getVariable ["VCN_Actived", true]) or !(alive _heli)
+		(!(isengineon _heli) or !(alive _heli) or (_heli isEqualTo objNull))
 	}, {
 		params ["_heli","_veh"];
+		_plane setVariable ["VCN_Actived", false];
 	}, [_heli,_veh]
 ] call CBA_fnc_waitUntilAndExecute;

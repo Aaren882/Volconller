@@ -111,8 +111,9 @@ if (VCN_debug2_fn) then {
 			setCustomSoundController [_plane ,"CustomSoundController15" ,_planeEXV_sdr_p - 1];
 		};*/
 
-		!(_plane getVariable ["VCN_Actived", true]) or !(alive _plane) or (_plane isEqualTo objNull)
+		(!(isengineon _plane) or !(alive _plane) or (_plane isEqualTo objNull))
 	}, {
 		params ["_plane","_veh"];
+    _plane setVariable ["VCN_Actived", false];
 	}, [_plane,_veh]
 ] call CBA_fnc_waitUntilAndExecute;
