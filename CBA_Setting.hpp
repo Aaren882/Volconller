@@ -98,18 +98,7 @@
 	false,
 	0,
 	{
-		if (_this and (missionNamespace getVariable ["VCN_Camera_Handler",-1] == -1)) then {
-		  _id = ["cameraView", {
-				params ["_unit","_current","_previous"];
-				if (_current == "EXTERNAL") then {
-				  call VCN_fnc_setVolume;
-				};
-			}] call CBA_fnc_addPlayerEventHandler;
-			missionNamespace setVariable ["VCN_Camera_Handler",_id];
-		} else {
-			call VCN_fnc_setVolume;
-			missionNamespace setVariable ["VCN_Camera_Handler",-1];
-		};
+		call VCN_fnc_SimHandler;
 	}
 ] call CBA_fnc_addSetting;
 
