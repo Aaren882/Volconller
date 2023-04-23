@@ -1,9 +1,11 @@
-params ["_heli","_veh"];
+params ["_heli"];
 
 _heli setVariable ["VCN_Actived", true];
 
 [{
-		params ["_heli","_veh"];
+		params ["_heli"];
+
+		_veh = cameraOn;
 
 		_heliEXV_sdr_p = heliEX_sdr / 100 * heliMulti_sdr;
 		_heliINV_sdr_p = heliIN_sdr / 100;
@@ -25,9 +27,9 @@ _heli setVariable ["VCN_Actived", true];
 
 		//setCustomSoundController [_heli ,"CustomSoundController16" ,_heliINV_sdr_p - 1];
 
-		if ((SoIV_fn) and (_veh != player) and (cameraView == "internal")) then {
+		if ((SoIV_fn) && (_veh != player) && (cameraView == "internal") && (isnull curatorCamera)) then {
 			if (_veh iskindof "plane") then {
-				if !(_door isEqualTo "") then {
+				if (_door != "") then {
 					if (_triggerSI) then {
 						setCustomSoundController [_heli ,"CustomSoundController14" ,_heliEX_sim_sdr_P - 1];
 					} else {
@@ -45,7 +47,7 @@ _heli setVariable ["VCN_Actived", true];
 
 		(!(isengineon _heli) or !(alive _heli) or (_heli isEqualTo objNull))
 	}, {
-		params ["_heli","_veh"];
-		_plane setVariable ["VCN_Actived", false];
-	}, [_heli,_veh]
+		params ["_heli"];
+		_heli setVariable ["VCN_Actived", false];
+	}, [_heli]
 ] call CBA_fnc_waitUntilAndExecute;

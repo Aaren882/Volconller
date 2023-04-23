@@ -1,16 +1,17 @@
-params ["_plane","_veh"];
+params ["_plane"];
 
 if (_plane getVariable ["VCN_Actived", false]) exitWith {};
 
 _plane setVariable ["VCN_Actived", true];
 
 if (VCN_debug2_fn) then {
-  hintSilent formatText ["Step 2 :looping%1VCN_Actived :%2%1Time :%3",lineBreak,(_plane getVariable ["VCN_Actived", false]),time];
+  hintSilent format ["Step 2 :looping%1VCN_Actived :%2%1Time :%3",lineBreak,(_plane getVariable ["VCN_Actived", false]),time];
 };
 
 [{
-		params ["_plane","_veh"];
+		params ["_plane"];
 		_door = getText (configFile >> "CfgVehicles" >> typeof _plane >> "DoorAnim");
+    _veh = cameraOn;
 
 		_planeEXV_sdr_p = planeEX_sdr / 100 * planeMulti_sdr;
 		_planeINV_sdr_p = planeIN_sdr / 100;
@@ -89,9 +90,9 @@ if (VCN_debug2_fn) then {
 		/////////////////////////////////////////////////////////////////////////////
 
 		//-Volume
-		if ((SoIV_fn) and (_veh != player) and (cameraView == "internal")) then {
+		if ((SoIV_fn) && (_veh != player) && (cameraView == "internal") && (isnull curatorCamera)) then {
 			if (_veh iskindof "plane") then {
-				if !(_door isEqualTo "") then {
+				if (_door != "") then {
 					if (_triggerSI) then {
 						setCustomSoundController [_plane ,"CustomSoundController15" ,_planeEX_sim_sdr_P - 1];
 					} else {
@@ -111,7 +112,7 @@ if (VCN_debug2_fn) then {
 
 		(!(isengineon _plane) or !(alive _plane) or (_plane isEqualTo objNull))
 	}, {
-		params ["_plane","_veh"];
+		params ["_plane"];
     _plane setVariable ["VCN_Actived", false];
-	}, [_plane,_veh]
+	}, [_plane]
 ] call CBA_fnc_waitUntilAndExecute;
